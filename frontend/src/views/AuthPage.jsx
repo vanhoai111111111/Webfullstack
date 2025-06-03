@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
+
 import "./styles/AuthPage.css";
 
 const AuthPage = () => {
     const [rightPanel, setRightPanel] = useState(false);
 
     return (
+        <div className="auth-page">
+
         <div className={`container ${rightPanel ? "right-panel-active" : ""}`}>
             <div className="container__form container--signup">
                 <SignUpForm />
@@ -26,6 +29,7 @@ const AuthPage = () => {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

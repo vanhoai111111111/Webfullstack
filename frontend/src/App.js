@@ -3,12 +3,14 @@ import AuthPage from "./views/AuthPage";
 import HomePage from "./views/HomePage";
 
 
+
 function App() {
     return (
+
         <Router>
             <Routes>
-                <Route path="/" element={<AuthPage />} />
-                <Route path="/home" element={<HomePage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/home" element={<AuthPage />} />
             </Routes>
         </Router>
     );

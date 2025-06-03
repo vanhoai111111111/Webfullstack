@@ -13,7 +13,7 @@ const SignInForm = () => {
             const result = await login(email, password);
 
 
-            navigate('/home'); // ✅ Chuyển sang trang HomePage
+            navigate('/'); // ✅ Chuyển sang trang HomePage
         } catch (error) {
             alert(error.message);
         }

@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllProducts, getProductImageUrl } from '../controllers/ProductController';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation, Autoplay } from 'swiper/modules';
 
+const sliderImages = [
+    '/images/slide1.png',
+    '/images/slide2.jpg',
+    '/images/slide3.jpg',
+];
 const HomePage = () => {
     const [products, setProducts] = useState([]);
 
@@ -10,10 +19,37 @@ const HomePage = () => {
 
     return (
         <div style={{ padding: '30px' }}>
+            <h1 style={{ textAlign: 'center' }}>Trang chủ</h1>
+
+            <Swiper
+                modules={[Navigation, Autoplay]}
+                spaceBetween={20}
+                slidesPerView={1}
+                navigation
+                autoplay={{ delay: 3000 }}
+                loop={true}
+                style={{ borderRadius: '12px', overflow: 'hidden' }}
+            >
+                {sliderImages.map((src, index) => (
+                    <SwiperSlide key={index}>
+                        <img
+                            src={src}
+                            alt={`Slide ${index + 1}`}
+                            style={{
+                                width: '100%',
+                                height: '400px',
+                                objectFit: 'cover',
+                            }}
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+
+        <div style={{ padding: '30px' }}>
             <h1 style={{ textAlign: 'center' }}>Danh sách sản phẩm</h1>
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '20px'
             }}>
                 {products.map(p => (
@@ -38,6 +74,7 @@ const HomePage = () => {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
     );
 };
